@@ -16,20 +16,20 @@
       <p>Roll the die to take your turn. If you get 1 your turn is over and 0 points are scored. Roll as many times as you wish! First player to 100 wins! </p>
       <div class="row">
         <div class="col-md-4">
-          <h2>Player 1</h2>
+          <h2 id="p1" >Player 1</h2>
           <p>Your total is:<span id="player-one-total"></span></p>
          
         </div>
         <div class = "middle-div col-md-4">
        <img id="diceman" src="https://media.giphy.com/media/5xtDarpTZP1hgRgReLK/giphy.gif" alt="">
           <div id= "dice-box">
-            <p id= "display-dice">-</p>
+            <ul id= "display-dice"> </ul>
           </div>
            <button id="roll" type="button" class="btn btn-dark">Roll!</button>
           <button id="hold" type="button" class="btn btn-danger">Hold</button>
         </div>
         <div class="col-md-4">
-          <h2>Player 2</h2>
+          <h2 id="p2">Player 2</h2>
           <p>Your total is:<span id="player-two-total"></span></p>
            
         </div>

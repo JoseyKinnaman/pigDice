@@ -4,45 +4,23 @@ function Game (player1, player2){
   this.player1 = player1;
   this.player2 = player2;
   this.currentPlayer = true;
+};
+
+Game.prototype.switchTurn = function () {
+  if (this.currentPlayer) {
+    this.currentPlayer = false
+  } else {
+    this.currentPlayer = true
+  }
 }
 
-// Game.prototype.getCurrentPlayer = function () {
-  
-// }
-
-
-
-
-
-
-
-
-
-//player 1 rolls the dice, if the number equals 1 then our total score is going to equal 0, then it turns over
-
-// player 2 rolls dice agian if they get a number higher than 1 it adds to their total. 
- 
-//player 1 rolls agian and then their total is added. 
-
-//player 1 holds their turn 
-
-//player 2 rolls and adds to total 
-
-//player 1 rolls and gets 100
-
-//player 1 wins 
-
-
-// Game.prototype.winner = function(){
-//   if ((this.total +this.score) >= 100){
-//     $(".winner").show();
-//   }
-
-
-
-
-
-
+Game.prototype.currentPlayer = function(){
+  if (this.currentPlayer) {
+    return this.player1
+  } else {
+    return this.player2
+  }
+}
 //  Backend for Player//
 function Player() {
   this.roll = 0;
@@ -50,60 +28,83 @@ function Player() {
   this.total = 0;
 }
 
-// Player.prototype.switchTurns = function() {
-//   this.currentPlayer = !this.currentPlayer;
-// }
-
 Player.prototype.playerTurn = function () {
   var newRoll = Math.floor(Math.random() * 6) + 1;
   this.roll = newRoll;
   if (newRoll === 1) {
     this.roll = 0;
     this.score = 0;
+    alert("You rolled 1! Score is 0. Your turn is over!")
+    game.switchTurn();
+    $("#p1").toggleClass("yellow-background");
+    $("#p2").toggleClass("yellow-background");
   } else {
     this.score += newRoll;
   }
-
   return this.score;
 }
 
+Player.prototype.totalDisplayed = function(totalCurrent, totalAdded){
+totalCurrent.text(this.score);
+totalAdded.text(this.total);
+}
 
 
-
+  Player.prototype.holdTurn = function (game) {
+    
+    
+    
+    // var roll = newRoll
+    // if (roll != 1 ){
+    //   return this.score += roll;
+    // }else if (roll= 1) {
+    //   $("#hold").toggle();
+      
+    //   return this.score
+    // }
+  }
 
 // Ui-Front Logic
 // Creates our two players for the game.
 var player1 = new Player();
 var player2 = new Player();
-var newGame = new Game(player1, player2);
-// newGame.addPlayer(player1);
-// newGame.addPlayer(player2);
-  console.log(newGame);
+var game = new Game(player1, player2); 
 
 $(document).ready(function () {
   $("#roll").click(function (event) {
     event.preventDefault();
     $("#diceman").toggle();
-    $("#display-dice").text(player1.playerTurn());
+    if (this.currentPlayer) { 
+       $("#display-dice").prepend("<li>" + player1.playerTurn() + "</li>");
+    } else {
+      $("#display-dice").prepend("<li>" + player2.playerTurn() + "</li>");
+    }
   });
 });
+
+$(document).ready(function () {
+  $("#hold").click(function (event) {
+    event.preventDefault();
+    $("#player-one-total").text(" " + this.score);
+ });
+}); 
+
+
+
+
+
+
+
+
+// player.hold();
+    // $("#player-two-total").text(" " + player1.score);
+
+    
+  
 
 // function attachContactListeners() {
 //   $("#dice-box").on("click", function(){
 //     showTotal(this.total)
 //   })
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
