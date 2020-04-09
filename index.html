@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="css/styles.css" type="text/css">
+  <script src="js/jquery-3.4.1.js"></script>
+  <script src="js/scripts.js"></script>
+  <title>Pig Dice Game</title>
+</head>
+<body>
+   <div class="container">
+    <div class="box">
+      <h1>The Pig Dice Game</h1>
+      <p>Roll the die to take your turn. If you get 1 your turn is over and 0 points are scored. Roll as many times as you wish! First player to 100 wins! </p>
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Player 1</h2>
+          <p>Your total is:<span id="player-one-total"></span></p>
+         
+        </div>
+        <div class = "middle-div col-md-4">
+       <img id="diceman" src="https://media.giphy.com/media/5xtDarpTZP1hgRgReLK/giphy.gif" alt="">
+          <div id= "dice-box">
+            <p id= "display-dice">-</p>
+          </div>
+           <button id="roll" type="button" class="btn btn-dark">Roll!</button>
+          <button id="hold" type="button" class="btn btn-danger">Hold</button>
+        </div>
+        <div class="col-md-4">
+          <h2>Player 2</h2>
+          <p>Your total is:<span id="player-two-total"></span></p>
+           
+        </div>
+      </div>
+    </div>
+   </div> 
+</body>
+</html>
+
+
